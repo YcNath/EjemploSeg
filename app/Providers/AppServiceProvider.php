@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Actions\Fortify\CreateNewUser;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
 
@@ -20,9 +21,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::loginView(fn () => view('auth.login'));
         Fortify::registerView(fn () => view('auth.register'));
-        
-    }
 
+    }
 }

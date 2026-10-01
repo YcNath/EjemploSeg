@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Persona;
 use Illuminate\Http\Request;
+use App\Models\Interes;
 
 class PersonaController extends Controller
 {
@@ -41,7 +42,7 @@ class PersonaController extends Controller
             $persona->intereses()->attach($request->intereses);
         }
         
-        return redirect()->route('persona.create')
+        return redirect()->route('personas.create')
             ->with('success', 'Persona creada exitosamente.');
     }
 
